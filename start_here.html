@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🌙 Builders of Light — Start Here</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0a1628;color:#e8dcc8;min-height:100vh;overflow-x:hidden}
+.stars{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--dur,3s) ease-in-out infinite var(--delay,0s)}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+.container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:40px 24px 60px}
+.hero{text-align:center;padding:60px 0 40px}
+.bismillah{font-family:'Amiri',serif;font-size:28px;color:#d4a843;margin-bottom:16px;opacity:.8}
+h1{font-family:'Amiri',serif;font-size:clamp(32px,6vw,52px);color:#d4a843;line-height:1.2;margin-bottom:12px}
+h1 em{font-style:normal;color:#e8dcc8}
+.subtitle{font-size:18px;color:rgba(232,220,200,.7);max-width:500px;margin:0 auto 32px;line-height:1.6}
+.version-badge{display:inline-block;background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);border-radius:20px;padding:6px 18px;font-size:13px;color:#d4a843;font-weight:600;margin-bottom:24px}
+.launch-btn{display:inline-block;background:linear-gradient(135deg,#d4a843,#c49030);color:#0a1628;font-size:20px;font-weight:700;padding:18px 48px;border-radius:16px;text-decoration:none;transition:all .3s;box-shadow:0 8px 32px rgba(212,168,67,.3)}
+.launch-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,168,67,.45)}
+.launch-btn span{font-size:24px;vertical-align:middle;margin-right:8px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin:48px 0}
+.feature{background:rgba(255,255,255,.03);border:1px solid rgba(212,168,67,.1);border-radius:16px;padding:24px;transition:all .3s}
+.feature:hover{border-color:rgba(212,168,67,.3);background:rgba(255,255,255,.05)}
+.feature-icon{font-size:32px;margin-bottom:12px}
+.feature h3{color:#d4a843;font-size:16px;margin-bottom:8px}
+.feature p{color:rgba(232,220,200,.6);font-size:14px;line-height:1.5}
+.stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:40px 0;padding:32px 0;border-top:1px solid rgba(212,168,67,.1);border-bottom:1px solid rgba(212,168,67,.1)}
+.stat{text-align:center}
+.stat-num{font-family:'Amiri',serif;font-size:36px;color:#d4a843;font-weight:700}
+.stat-label{font-size:12px;color:rgba(232,220,200,.5);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.section{margin:48px 0}
+.section h2{font-family:'Amiri',serif;font-size:24px;color:#d4a843;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.section h2::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(212,168,67,.3),transparent)}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.doc-card{display:block;background:rgba(255,255,255,.03);border:1px solid rgba(212,168,67,.08);border-radius:12px;padding:16px;text-decoration:none;color:inherit;transition:all .3s}
+.doc-card:hover{border-color:rgba(212,168,67,.25);transform:translateY(-2px)}
+.doc-card .icon{font-size:24px;margin-bottom:8px}
+.doc-card h4{color:#e8dcc8;font-size:14px;margin-bottom:4px}
+.doc-card p{color:rgba(232,220,200,.5);font-size:12px}
+.lang-demo{display:flex;justify-content:center;gap:12px;margin:20px 0}
+.lang-pill{padding:10px 24px;border-radius:10px;border:1.5px solid rgba(212,168,67,.2);background:rgba(10,22,40,.8);font-size:14px;color:rgba(232,220,200,.7);cursor:default}
+.lang-pill.active{border-color:#d4a843;color:#d4a843;font-weight:600;background:rgba(212,168,67,.08)}
+.quick-start{background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.15);border-radius:16px;padding:32px;margin:32px 0}
+.quick-start ol{padding-left:24px;color:rgba(232,220,200,.7);line-height:2}
+.quick-start code{background:rgba(212,168,67,.1);padding:2px 8px;border-radius:4px;font-size:13px;color:#d4a843}
+.footer{text-align:center;padding:40px 0 20px;color:rgba(232,220,200,.3);font-size:13px}
+.footer a{color:rgba(212,168,67,.5);text-decoration:none}
+.new-tag{display:inline-block;background:#1a8a5c;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;text-transform:uppercase}
+@media(max-width:600px){
+  .hero{padding:40px 0 24px}
+  .stats{gap:24px}
+  .container{padding:24px 16px 40px}
+}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="container">
+
+<div class="hero">
+  <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <h1>Builders <em>of</em> Light</h1>
+  <p class="subtitle">An interactive journey through the Islamic Golden Age — for curious minds aged 7–14.</p>
+  <div class="version-badge">v1.0 · 830 KB · 139 Sections · 3 Languages</div>
+  <br><br>
+  <a href="index.html" class="launch-btn"><span>🚀</span> Launch the App</a>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">139</div><div class="stat-label">Interactive Sections</div></div>
+  <div class="stat"><div class="stat-num">434+</div><div class="stat-label">Functions</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Languages</div></div>
+  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Dependencies</div></div>
+</div>
+
+<div class="features">
+  <div class="feature">
+    <div class="feature-icon">📖</div>
+    <h3>Stories & Scholars</h3>
+    <p>Meet Al-Khwarizmi, Ibn Sina, Fatima al-Fihri and more through interactive biographies, diary entries, and time-travel narratives.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🎮</div>
+    <h3>Games & Puzzles</h3>
+    <p>Crosswords, word searches, memory games, Wordle, Jeopardy, mazes, scrambles, and 30+ other interactive challenges.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🔬</div>
+    <h3>Science Labs</h3>
+    <p>Build a camera obscura, fly with Ibn Firnas, distill like Jabir, explore the Elephant Clock — hands-on demos.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🌍</div>
+    <h3>3 Languages <span class="new-tag">NEW</span></h3>
+    <p>Full English, French, and Arabic support with RTL layout. Switch languages anytime with the built-in switcher.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">🎨</div>
+    <h3>Art & Culture</h3>
+    <p>Islamic geometric patterns, calligraphy tools, music heritage, architecture builder, textile gallery, and food history.</p>
+  </div>
+  <div class="feature">
+    <div class="feature-icon">📊</div>
+    <h3>Track Progress</h3>
+    <p>Stars system, achievement badges, dashboard, certificates, streaks, and a personal progress map — all saved locally.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🌐 Multilingual Support</h2>
+  <p style="color:rgba(232,220,200,.6);line-height:1.7;margin-bottom:16px">
+    Switch between English, French, and Arabic at any time using the language switcher in the top corner. The app includes 360+ translated content strings, full RTL layout for Arabic, and translated section titles, subtitles, quizzes, and interactive content.
+  </p>
+  <div class="lang-demo">
+    <div class="lang-pill active">EN English</div>
+    <div class="lang-pill">FR Français</div>
+    <div class="lang-pill">عربي Arabic</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>⚡ Quick Start</h2>
+  <div class="quick-start">
+    <ol>
+      <li>Open <code>index.html</code> in any modern browser (Chrome, Firefox, Safari, Edge)</li>
+      <li>That's it — start scrolling and tapping!</li>
+      <li>No server, no install, no internet required after first load</li>
+      <li>Progress saves automatically to your browser</li>
+    </ol>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📋 What's Inside</h2>
+  <p style="color:rgba(232,220,200,.6);line-height:1.8;margin-bottom:16px">
+    11 categories spanning the full breadth of Islamic Golden Age achievements:
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px">
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">📖 Stories & Narratives</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🧑‍🏫 Scholars & People</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🏙️ Places & Geography</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🔬 Science & Discovery</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🎨 Arts & Culture</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🔤 Language & Arabic</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🎮 Games & Puzzles</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🕌 Faith & Values</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">📊 Progress & Tracking</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">🏆 Completion & Awards</div>
+    <div style="padding:10px 14px;background:rgba(255,255,255,.02);border-radius:8px;font-size:13px">📅 Daily Challenges</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📚 Documentation</h2>
+  <div class="doc-grid">
+    <a href="README.md" class="doc-card">
+      <div class="icon">📖</div>
+      <h4>README</h4>
+      <p>Full project overview and technical details</p>
+    </a>
+    <a href="QUICKSTART.md" class="doc-card">
+      <div class="icon">⚡</div>
+      <h4>Quick Start</h4>
+      <p>Get up and running in 30 seconds</p>
+    </a>
+    <a href="TEACHERS-GUIDE.md" class="doc-card">
+      <div class="icon">👩‍🏫</div>
+      <h4>Teachers Guide</h4>
+      <p>Classroom activities and lesson plans</p>
+    </a>
+    <a href="PARENTS-GUIDE.md" class="doc-card">
+      <div class="icon">👨‍👩‍👧</div>
+      <h4>Parents Guide</h4>
+      <p>How to use at home with your child</p>
+    </a>
+    <a href="FAQ.md" class="doc-card">
+      <div class="icon">❓</div>
+      <h4>FAQ</h4>
+      <p>Common questions answered</p>
+    </a>
+    <a href="CHANGELOG.md" class="doc-card">
+      <div class="icon">📝</div>
+      <h4>Changelog</h4>
+      <p>Version history v1–v21</p>
+    </a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>💻 System Requirements</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+    <div style="padding:14px;background:rgba(255,255,255,.02);border-radius:8px"><strong style="color:#d4a843">Browser</strong><br><span style="font-size:13px;color:rgba(232,220,200,.6)">Chrome 80+, Firefox 78+, Safari 14+, Edge 80+</span></div>
+    <div style="padding:14px;background:rgba(255,255,255,.02);border-radius:8px"><strong style="color:#d4a843">Device</strong><br><span style="font-size:13px;color:rgba(232,220,200,.6)">Any — desktop, tablet, phone</span></div>
+    <div style="padding:14px;background:rgba(255,255,255,.02);border-radius:8px"><strong style="color:#d4a843">Internet</strong><br><span style="font-size:13px;color:rgba(232,220,200,.6)">Only for first load (PWA offline)</span></div>
+    <div style="padding:14px;background:rgba(255,255,255,.02);border-radius:8px"><strong style="color:#d4a843">Storage</strong><br><span style="font-size:13px;color:rgba(232,220,200,.6)">~1 MB localStorage for progress</span></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🌙 Builders of Light · بُناة النور · v1.0</p>
+  <p style="margin-top:8px">Single-file HTML app · Zero dependencies · Offline capable</p>
+</div>
+
+</div>
+
+<script>
+// Generate stars
+const c=document.getElementById('stars');
+for(let i=0;i<80;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.left=Math.random()*100+'%';
+  s.style.top=Math.random()*100+'%';
+  const sz=1+Math.random()*2;
+  s.style.width=sz+'px';s.style.height=sz+'px';
+  s.style.setProperty('--dur',(2+Math.random()*4)+'s');
+  s.style.setProperty('--delay',Math.random()*3+'s');
+  c.appendChild(s);
+}
+</script>
+</body>
+</html>
